@@ -1,7 +1,7 @@
 [
   {
     "name": "TaskFlow Dashboard",
-    "description": "Aplicație de management task-uri cu drag & drop și autentificare.",
+    "description": "Task management app with drag & drop and authentication.",
     "language": "JavaScript",
     "stargazers_count": 14,
     "forks_count": 3,
@@ -10,7 +10,7 @@
   },
   {
     "name": "Weather Pulse",
-    "description": "Dashboard meteo cu date live și grafice interactive.",
+    "description": "Weather dashboard with live data and interactive charts.",
     "language": "TypeScript",
     "stargazers_count": 9,
     "forks_count": 2,
@@ -19,7 +19,7 @@
   },
   {
     "name": "Smart Notes API",
-    "description": "API REST pentru notițe inteligente, JWT și validare.",
+    "description": "REST API for smart notes with JWT and validation.",
     "language": "Node.js",
     "stargazers_count": 8,
     "forks_count": 1,
@@ -28,7 +28,7 @@
   },
   {
     "name": "Portfolio Terminal",
-    "description": "Portofoliu personal cu UI inspirat de terminal.",
+    "description": "Personal portfolio with a terminal-inspired UI.",
     "language": "React",
     "stargazers_count": 11,
     "forks_count": 4,
@@ -37,7 +37,7 @@
   },
   {
     "name": "UI Component Lab",
-    "description": "Colecție de componente responsive reutilizabile.",
+    "description": "Collection of reusable responsive components.",
     "language": "CSS",
     "stargazers_count": 6,
     "forks_count": 1,
@@ -46,7 +46,7 @@
   },
   {
     "name": "DataViz Insights",
-    "description": "Visualizări de date pentru rapoarte web.",
+    "description": "Data visualizations for web reports.",
     "language": "Python",
     "stargazers_count": 7,
     "forks_count": 2,

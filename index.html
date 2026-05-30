@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -11,64 +11,64 @@
       <img
         class="profile__avatar"
         src="https://avatars.githubusercontent.com/u/237383764?v=4"
-        alt="Poza de profil Stefan"
+        alt="Stefan profile photo"
       />
       <div>
         <p class="profile__role">Front-end Developer | JavaScript, React, CSS</p>
-        <h1>Ștefan</h1>
+        <h1>Stefan</h1>
         <p class="profile__bio">
-          Construiesc aplicații web moderne, cu focus pe interfețe curate, performanță și integrare API.
+          I build modern web apps focused on clean interfaces, performance, and API integration.
         </p>
       </div>
     </header>
 
     <main>
       <section class="panel">
-        <h2>Experiență</h2>
+        <h2>Experience</h2>
         <ul>
-          <li>Front-end Developer — Proiecte Freelance — 2024‑Prezent</li>
-          <li>Web Assistant — Internship local — 2023‑2024</li>
+          <li>Front-end Developer — Freelance Projects — 2024‑Present</li>
+          <li>Web Assistant — Local Internship — 2023‑2024</li>
         </ul>
       </section>
 
       <section class="panel">
-        <h2>Educație</h2>
+        <h2>Education</h2>
         <ul>
-          <li>Facultatea de Informatică — 2023‑2027</li>
-          <li>Certificări JavaScript & Web Development — 2024</li>
+          <li>Computer Science Faculty — 2023‑2027</li>
+          <li>JavaScript & Web Development Certifications — 2024</li>
         </ul>
       </section>
 
       <section class="panel portfolio" aria-labelledby="portfolio-title">
         <div class="portfolio__header">
-          <h2 id="portfolio-title">Portofoliu GitHub</h2>
-          <p class="portfolio__subtitle">Proiecte încărcate din GitHub API</p>
+          <h2 id="portfolio-title">GitHub Portfolio</h2>
+          <p class="portfolio__subtitle">Projects loaded from the GitHub API</p>
         </div>
 
         <div class="controls">
           <label>
-            Caută proiect:
-            <input id="searchInput" type="search" placeholder="ex: calculator, api, react" />
+            Search projects:
+            <input id="searchInput" type="search" placeholder="e.g., calculator, api, react" />
           </label>
           <label>
-            Sortează după:
+            Sort by:
             <select id="sortSelect">
-              <option value="updated">Ultima actualizare</option>
-              <option value="stars">Stele</option>
+              <option value="updated">Last updated</option>
+              <option value="stars">Stars</option>
             </select>
           </label>
           <label>
-            Limbaj:
+            Language:
             <select id="languageFilter">
-              <option value="all">Toate</option>
+              <option value="all">All</option>
             </select>
           </label>
         </div>
 
         <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
-        <div id="loadingSpinner" class="spinner" aria-label="Se încarcă proiectele"></div>
+        <div id="loadingSpinner" class="spinner" aria-label="Loading projects"></div>
         <div id="projectsGrid" class="projects-grid"></div>
-        <button id="loadMoreBtn" class="load-more" type="button">Load More</button>
+        <button id="loadMoreBtn" class="load-more" type="button">Load more</button>
       </section>
     </main>
 

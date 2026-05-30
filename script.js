@@ -43,15 +43,15 @@ function getFilteredProjects() {
       const matchesSearch =
         project.name.toLowerCase().includes(term) ||
         (project.description || "").toLowerCase().includes(term);
-      const matchesLanguage = language === "all" || (project.language || "Necunoscut") === language;
+      const matchesLanguage = language === "all" || (project.language || "Unknown") === language;
       return matchesSearch && matchesLanguage;
     })
   );
 }
 
 function buildLanguageFilter(projects) {
-  const languages = [...new Set(projects.map((project) => project.language || "Necunoscut"))].sort();
-  languageFilter.innerHTML = '<option value="all">Toate</option>';
+  const languages = [...new Set(projects.map((project) => project.language || "Unknown"))].sort();
+  languageFilter.innerHTML = '<option value="all">All</option>';
 
   for (const language of languages) {
     const option = document.createElement("option");
@@ -69,11 +69,11 @@ function createCard(project) {
   title.textContent = project.name;
 
   const description = document.createElement("p");
-  description.textContent = project.description || "Fără descriere disponibilă";
+  description.textContent = project.description || "No description available";
 
   const language = document.createElement("p");
   language.className = "project-language";
-  language.textContent = `Limbaj: ${project.language || "Necunoscut"}`;
+  language.textContent = `Language: ${project.language || "Unknown"}`;
 
   const meta = document.createElement("div");
   meta.className = "project-meta";
@@ -84,7 +84,7 @@ function createCard(project) {
   link.href = project.html_url;
   link.target = "_blank";
   link.rel = "noopener noreferrer";
-  link.textContent = "Vezi codul sursă";
+  link.textContent = "View source code";
 
   card.append(title, description, language, meta, link);
   return card;
@@ -98,9 +98,9 @@ function renderProjects() {
   visibleProjects.forEach((project) => projectsGrid.appendChild(createCard(project)));
 
   if (!projects.length) {
-    setStatus("Nu există proiecte care să corespundă filtrului curent.");
+    setStatus("No projects match the current filter.");
   } else {
-    setStatus(`Afișare ${visibleProjects.length} din ${projects.length} proiecte.`);
+    setStatus(`Showing ${visibleProjects.length} of ${projects.length} projects.`);
   }
 
   loadMoreBtn.style.display = projects.length > visibleProjects.length ? "inline-block" : "none";
@@ -109,14 +109,14 @@ function renderProjects() {
 async function loadFallbackProjects() {
   const response = await fetch("./fallback-projects.json");
   if (!response.ok) {
-    throw new Error("Fallback indisponibil");
+    throw new Error("Fallback unavailable");
   }
   return response.json();
 }
 
 async function init() {
   showLoading(true);
-  setStatus("Se încarcă proiectele...");
+  setStatus("Loading projects...");
 
   try {
     const response = await fetch(API_URL);
@@ -125,10 +125,11 @@ async function init() {
     }
 
     const repos = await response.json();
-    const ownRepos = repos.filter((repo) => repo.fork === false);
+    const publicRepos = repos.filter((repo) => repo.private === false);
+    const ownRepos = publicRepos.filter((repo) => repo.fork === false);
 
     if (ownRepos.length < 5) {
-      setStatus("Sunt prea puține proiecte publice. Afișăm o listă demonstrativă.");
+      setStatus("Too few public projects. Showing a demo list.");
       allProjects = await loadFallbackProjects();
     } else {
       allProjects = ownRepos;
@@ -139,11 +140,11 @@ async function init() {
   } catch (error) {
     try {
       allProjects = await loadFallbackProjects();
-      setStatus("Ups! Nu am putut încărca proiectele momentan. Afișăm proiecte locale.");
+      setStatus("Oops! We couldn't load the projects right now. Showing local projects.");
       buildLanguageFilter(allProjects);
       renderProjects();
     } catch {
-      setStatus("Ups! Nu am putut încărca proiectele momentan.");
+      setStatus("Oops! We couldn't load the projects right now.");
       projectsGrid.innerHTML = "";
       loadMoreBtn.style.display = "none";
     }

@@ -1,43 +1,43 @@
 # Web-profile
 
-Pagină web personală (CV/Portofoliu) cu temă **IDE / Dev-Tools Dark Mode**, care afișează dinamic proiectele publice din GitHub API.
+Personal CV/portfolio web page with an **IDE / Dev-Tools Dark Mode** theme that dynamically displays public GitHub projects.
 
-## Funcționalități
-- Secțiune profil (nume, rol, bio, poză)
-- Secțiune experiență și educație
-- Integrare cu `https://api.github.com/users/USERNAME/repos`
-- Carduri proiect cu:
-  - nume
-  - descriere (fallback: `Fără descriere disponibilă`)
-  - limbaj principal
-  - stele și fork-uri
-  - link către codul sursă
-- Excludere automată repo-uri fork (`fork === false`)
-- Sortare client-side (după `updated_at` sau `stargazers_count`)
-- Filtrare în timp real (search + limbaj)
-- UX states: loading spinner + mesaj prietenos pentru erori
-- Dacă sunt puține proiecte sau API-ul eșuează, se încarcă fallback din `fallback-projects.json`
-- Paginare incrementală prin buton **Load More** (6 proiecte inițiale)
-- Design responsive (telefon/tabletă/desktop)
+## Features
+- Profile section (name, role, bio, photo)
+- Experience and education sections
+- Integration with `https://api.github.com/users/USERNAME/repos`
+- Project cards with:
+  - name
+  - description (fallback: `No description available`)
+  - primary language
+  - stars and forks
+  - link to source code
+- Only public, non-fork repositories are shown
+- Client-side sorting (by `updated_at` or `stargazers_count`)
+- Real-time filtering (search + language)
+- UX states: loading spinner + friendly error messages
+- If there are too few projects or the API fails, loads a fallback list from `fallback-projects.json`
+- Incremental pagination via **Load more** (6 projects initially)
+- Responsive design (mobile/tablet/desktop)
 
-## Rulare locală
-1. Clonează repository-ul
-2. Pornește un server static în directorul proiectului:
+## Run locally
+1. Clone the repository
+2. Start a static server in the project root:
    - Python: `python -m http.server 8000`
-3. Deschide `http://localhost:8000`
+3. Open `http://localhost:8000`
 
-## Tehnologii
+## Tech stack
 - HTML5
 - CSS3 (Grid/Flexbox)
 - JavaScript (Fetch API)
 
-## Deploy (gratuit)
-Proiectul este pregătit pentru deploy pe:
+## Deploy (free)
+This project is ready to deploy on:
 - **GitHub Pages**
 - **Vercel**
 - **Netlify**
 
-Pentru GitHub Pages:
-1. Push pe branch-ul principal
+For GitHub Pages:
+1. Push to the main branch
 2. `Settings -> Pages`
-3. Selectează deploy din branch (root)
+3. Choose the root directory for deployment
