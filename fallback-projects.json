@@ -1,0 +1,56 @@
+[
+  {
+    "name": "TaskFlow Dashboard",
+    "description": "Task management app with drag & drop and authentication.",
+    "language": "JavaScript",
+    "stargazers_count": 14,
+    "forks_count": 3,
+    "html_url": "https://github.com/Stefan-cs-sudo/taskflow-dashboard",
+    "updated_at": "2026-05-01T12:00:00Z"
+  },
+  {
+    "name": "Weather Pulse",
+    "description": "Weather dashboard with live data and interactive charts.",
+    "language": "TypeScript",
+    "stargazers_count": 9,
+    "forks_count": 2,
+    "html_url": "https://github.com/Stefan-cs-sudo/weather-pulse",
+    "updated_at": "2026-04-27T10:40:00Z"
+  },
+  {
+    "name": "Smart Notes API",
+    "description": "REST API for smart notes with JWT and validation.",
+    "language": "Node.js",
+    "stargazers_count": 8,
+    "forks_count": 1,
+    "html_url": "https://github.com/Stefan-cs-sudo/smart-notes-api",
+    "updated_at": "2026-04-18T18:20:00Z"
+  },
+  {
+    "name": "Portfolio Terminal",
+    "description": "Personal portfolio with a terminal-inspired UI.",
+    "language": "React",
+    "stargazers_count": 11,
+    "forks_count": 4,
+    "html_url": "https://github.com/Stefan-cs-sudo/portfolio-terminal",
+    "updated_at": "2026-03-22T08:30:00Z"
+  },
+  {
+    "name": "UI Component Lab",
+    "description": "Collection of reusable responsive components.",
+    "language": "CSS",
+    "stargazers_count": 6,
+    "forks_count": 1,
+    "html_url": "https://github.com/Stefan-cs-sudo/ui-component-lab",
+    "updated_at": "2026-03-10T09:15:00Z"
+  },
+  {
+    "name": "DataViz Insights",
+    "description": "Data visualizations for web reports.",
+    "language": "Python",
+    "stargazers_count": 7,
+    "forks_count": 2,
+    "html_url": "https://github.com/Stefan-cs-sudo/dataviz-insights",
+    "updated_at": "2026-02-12T14:05:00Z"
+  }
+]
