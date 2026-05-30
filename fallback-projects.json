@@ -1,0 +1,56 @@
+[
+  {
+    "name": "TaskFlow Dashboard",
+    "description": "Aplicație de management task-uri cu drag & drop și autentificare.",
+    "language": "JavaScript",
+    "stargazers_count": 14,
+    "forks_count": 3,
+    "html_url": "https://github.com/Stefan-cs-sudo/taskflow-dashboard",
+    "updated_at": "2026-05-01T12:00:00Z"
+  },
+  {
+    "name": "Weather Pulse",
+    "description": "Dashboard meteo cu date live și grafice interactive.",
+    "language": "TypeScript",
+    "stargazers_count": 9,
+    "forks_count": 2,
+    "html_url": "https://github.com/Stefan-cs-sudo/weather-pulse",
+    "updated_at": "2026-04-27T10:40:00Z"
+  },
+  {
+    "name": "Smart Notes API",
+    "description": "API REST pentru notițe inteligente, JWT și validare.",
+    "language": "Node.js",
+    "stargazers_count": 8,
+    "forks_count": 1,
+    "html_url": "https://github.com/Stefan-cs-sudo/smart-notes-api",
+    "updated_at": "2026-04-18T18:20:00Z"
+  },
+  {
+    "name": "Portfolio Terminal",
+    "description": "Portofoliu personal cu UI inspirat de terminal.",
+    "language": "React",
+    "stargazers_count": 11,
+    "forks_count": 4,
+    "html_url": "https://github.com/Stefan-cs-sudo/portfolio-terminal",
+    "updated_at": "2026-03-22T08:30:00Z"
+  },
+  {
+    "name": "UI Component Lab",
+    "description": "Colecție de componente responsive reutilizabile.",
+    "language": "CSS",
+    "stargazers_count": 6,
+    "forks_count": 1,
+    "html_url": "https://github.com/Stefan-cs-sudo/ui-component-lab",
+    "updated_at": "2026-03-10T09:15:00Z"
+  },
+  {
+    "name": "DataViz Insights",
+    "description": "Visualizări de date pentru rapoarte web.",
+    "language": "Python",
+    "stargazers_count": 7,
+    "forks_count": 2,
+    "html_url": "https://github.com/Stefan-cs-sudo/dataviz-insights",
+    "updated_at": "2026-02-12T14:05:00Z"
+  }
+]

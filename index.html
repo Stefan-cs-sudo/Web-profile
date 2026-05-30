@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ro">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stefan | Web Profile</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="profile">
+      <img
+        class="profile__avatar"
+        src="https://avatars.githubusercontent.com/u/237383764?v=4"
+        alt="Poza de profil Stefan"
+      />
+      <div>
+        <p class="profile__role">Front-end Developer | JavaScript, React, CSS</p>
+        <h1>Ștefan</h1>
+        <p class="profile__bio">
+          Construiesc aplicații web moderne, cu focus pe interfețe curate, performanță și integrare API.
+        </p>
+      </div>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Experiență</h2>
+        <ul>
+          <li>Front-end Developer — Proiecte Freelance — 2024‑Prezent</li>
+          <li>Web Assistant — Internship local — 2023‑2024</li>
+        </ul>
+      </section>
+
+      <section class="panel">
+        <h2>Educație</h2>
+        <ul>
+          <li>Facultatea de Informatică — 2023‑2027</li>
+          <li>Certificări JavaScript & Web Development — 2024</li>
+        </ul>
+      </section>
+
+      <section class="panel portfolio" aria-labelledby="portfolio-title">
+        <div class="portfolio__header">
+          <h2 id="portfolio-title">Portofoliu GitHub</h2>
+          <p class="portfolio__subtitle">Proiecte încărcate din GitHub API</p>
+        </div>
+
+        <div class="controls">
+          <label>
+            Caută proiect:
+            <input id="searchInput" type="search" placeholder="ex: calculator, api, react" />
+          </label>
+          <label>
+            Sortează după:
+            <select id="sortSelect">
+              <option value="updated">Ultima actualizare</option>
+              <option value="stars">Stele</option>
+            </select>
+          </label>
+          <label>
+            Limbaj:
+            <select id="languageFilter">
+              <option value="all">Toate</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
+        <div id="loadingSpinner" class="spinner" aria-label="Se încarcă proiectele"></div>
+        <div id="projectsGrid" class="projects-grid"></div>
+        <button id="loadMoreBtn" class="load-more" type="button">Load More</button>
+      </section>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
