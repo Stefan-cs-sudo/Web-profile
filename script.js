@@ -12,6 +12,7 @@ const loadMoreBtn = document.getElementById("loadMoreBtn");
 
 let allProjects = [];
 let visibleCount = PAGE_SIZE;
+let statusNotice = "";
 
 function showLoading(isLoading) {
   loadingSpinner.style.display = isLoading ? "block" : "none";
@@ -19,6 +20,10 @@ function showLoading(isLoading) {
 
 function setStatus(text) {
   statusMessage.textContent = text;
+}
+
+function setStatusNotice(text) {
+  statusNotice = text;
 }
 
 function sortProjects(projects) {
@@ -97,11 +102,16 @@ function renderProjects() {
   projectsGrid.innerHTML = "";
   visibleProjects.forEach((project) => projectsGrid.appendChild(createCard(project)));
 
+  let statusText = "";
   if (!projects.length) {
-    setStatus("No projects match the current filter.");
+    statusText = "No projects match the current filter.";
   } else {
-    setStatus(`Showing ${visibleProjects.length} of ${projects.length} projects.`);
+    statusText = `Showing ${visibleProjects.length} of ${projects.length} projects.`;
   }
+  if (statusNotice) {
+    statusText = `${statusNotice} ${statusText}`.trim();
+  }
+  setStatus(statusText);
 
   loadMoreBtn.style.display = projects.length > visibleProjects.length ? "inline-block" : "none";
 }
@@ -116,6 +126,7 @@ async function loadFallbackProjects() {
 
 async function init() {
   showLoading(true);
+  setStatusNotice("");
   setStatus("Loading projects...");
 
   try {
@@ -128,10 +139,11 @@ async function init() {
     const publicRepos = repos.filter((repo) => repo.private === false);
     const ownRepos = publicRepos.filter((repo) => repo.fork === false);
 
-    if (ownRepos.length < 5) {
-      setStatus("Too few public projects. Showing a demo list.");
+    if (ownRepos.length <= PAGE_SIZE) {
+      setStatusNotice("Too few public projects. Showing a demo list.");
       allProjects = await loadFallbackProjects();
     } else {
+      setStatusNotice("");
       allProjects = ownRepos;
     }
 
@@ -140,10 +152,11 @@ async function init() {
   } catch (error) {
     try {
       allProjects = await loadFallbackProjects();
-      setStatus("Oops! We couldn't load the projects right now. Showing local projects.");
+      setStatusNotice("Oops! We couldn't load the projects right now. Showing local projects.");
       buildLanguageFilter(allProjects);
       renderProjects();
     } catch {
+      setStatusNotice("");
       setStatus("Oops! We couldn't load the projects right now.");
       projectsGrid.innerHTML = "";
       loadMoreBtn.style.display = "none";
