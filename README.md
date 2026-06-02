@@ -1,6 +1,6 @@
 # Web-profile
 
-Personal CV/portfolio web page with an **IDE / Dev-Tools Dark Mode** theme that dynamically displays public GitHub projects.
+Personal CV/portfolio web page with an **IoT-inspired creative** theme that dynamically displays public GitHub projects.
 
 ## Features
 - Profile section (name, role, bio, photo)
