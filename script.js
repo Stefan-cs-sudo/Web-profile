@@ -113,9 +113,23 @@ function renderProjects() {
   }
   setStatus(statusText);
 
-  loadMoreBtn.style.display = projects.length > visibleProjects.length ? "inline-block" : "none";
-}
 
+  if (projects.length <= PAGE_SIZE) {
+   
+    loadMoreBtn.style.display = "none";
+  } else if (visibleProjects.length >= projects.length) {
+   
+    loadMoreBtn.style.display = "inline-block";
+    loadMoreBtn.textContent = "Show less";
+    loadMoreBtn.setAttribute("data-action", "collapse");
+  } else {
+   
+    loadMoreBtn.style.display = "inline-block";
+    loadMoreBtn.textContent = "Load more";
+    loadMoreBtn.setAttribute("data-action", "expand");
+  }
+}
+/*
 async function loadFallbackProjects() {
   const response = await fetch("./fallback-projects.json");
   if (!response.ok) {
@@ -123,7 +137,8 @@ async function loadFallbackProjects() {
   }
   return response.json();
 }
-
+  */
+/*
 async function init() {
   showLoading(true);
   setStatusNotice("");
@@ -165,6 +180,46 @@ async function init() {
     showLoading(false);
   }
 }
+*/
+
+
+async function init() {
+  showLoading(true);
+  setStatusNotice("");
+  setStatus("Loading projects...");
+
+  try {
+    const response = await fetch(API_URL);
+    if (!response.ok) {
+      throw new Error("GitHub API error");
+    }
+
+    const repos = await response.json();
+    
+ 
+    const ownRepos = repos.filter((repo) => repo.fork === false);
+
+    if (ownRepos.length === 0) {
+      setStatus("No public repositories found.");
+      loadMoreBtn.style.display = "none";
+      return;
+    }
+
+   
+    allProjects = ownRepos;
+
+    buildLanguageFilter(allProjects);
+    renderProjects();
+  } catch (error) {
+    console.error(error);
+    setStatus("Oops! We couldn't load the GitHub projects right now.");
+    projectsGrid.innerHTML = "";
+    loadMoreBtn.style.display = "none";
+  } finally {
+    showLoading(false);
+  }
+}
+
 
 searchInput.addEventListener("input", () => {
   visibleCount = PAGE_SIZE;
@@ -181,9 +236,22 @@ languageFilter.addEventListener("change", () => {
   renderProjects();
 });
 
+
 loadMoreBtn.addEventListener("click", () => {
-  visibleCount += PAGE_SIZE;
-  renderProjects();
+  const action = loadMoreBtn.getAttribute("data-action");
+  
+  if (action === "collapse") {
+
+    visibleCount = PAGE_SIZE;
+    renderProjects();
+    
+    
+    document.querySelector(".portfolio").scrollIntoView({ behavior: "smooth" });
+  } else {
+  
+    visibleCount += PAGE_SIZE;
+    renderProjects();
+  }
 });
 
 init();
