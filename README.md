@@ -1,6 +1,6 @@
 # Web-profile
 
-Personal CV/portfolio web page with an **IoT-inspired creative** theme that dynamically displays public GitHub projects.
+Personal CV/portfolio web page that dynamically displays public GitHub projects.
 
 ## Features
 - Profile section (name, role, bio, photo)
@@ -31,13 +31,3 @@ Personal CV/portfolio web page with an **IoT-inspired creative** theme that dyna
 - CSS3 (Grid/Flexbox)
 - JavaScript (Fetch API)
 
-## Deploy (free)
-This project is ready to deploy on:
-- **GitHub Pages**
-- **Vercel**
-- **Netlify**
-
-For GitHub Pages:
-1. Push to the main branch
-2. `Settings -> Pages`
-3. Choose the root directory for deployment
