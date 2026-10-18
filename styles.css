@@ -16,6 +16,13 @@
   box-sizing: border-box;
 }
 
+footer{
+  text-align: center;
+  margin-top: 24px;
+  color: var(--muted);
+    text-decoration: none;
+}
+
 body {
   margin: 0;
   padding: 24px;
@@ -268,6 +275,26 @@ button {
 }
 
 button:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
+  color: #fff;
+}
+
+.page-link {
+  display: inline-block;
+  background: linear-gradient(180deg, #162235 0%, #0d1523 100%);
+  color: var(--accent);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 10px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.page-link:hover {
   border-color: var(--accent);
   box-shadow: 0 0 10px rgba(0, 229, 255, 0.2);
   color: #fff;
