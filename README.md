@@ -1,5 +1,20 @@
 # Web-profile
 
+## Project structure
+
+```text
+Web-profile/
+├── index.html
+├── about.html
+├── projects.html
+├── contact.html
+├── css/
+│   ├── style.css
+│   └── visualise.css
+└── js/
+    └── script.js
+```
+
 Personal CV/portfolio web page that dynamically displays public GitHub projects.
 
 ## Features
@@ -30,4 +45,3 @@ Personal CV/portfolio web page that dynamically displays public GitHub projects.
 - HTML5
 - CSS3 (Grid/Flexbox)
 - JavaScript (Fetch API)
-

@@ -4,89 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stefan | Embedded Engineering</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
-    <header class="profile">
+    <header class="site-header">
+      <a class="site-logo" href="index.html">STEFAN<span>_DEV</span></a>
+      <button class="hamburger" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="nav-menu" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
 
-      <img
-        class="profile__avatar"
-        src="https://avatars.githubusercontent.com/u/237383764?v=4"
-        alt="Stefan profile photo"
-      />
-      <div>
-        <p class="profile__role">Student | Firmware, IoT, Electronics</p>
-        <h1>Stefan</h1>
-        <p class="profile__bio">
-          I'm passionate about creating efficient firmware, optimizing resource-constrained devices, and
-          exploring the intersection of hardware and software in the embedded world.
-        </p>
-      </div>
-         <div class="hardware-leds">
+    <main>
+      <section class="profile reveal">
+        <img class="profile__avatar" src="https://avatars.githubusercontent.com/u/237383764?v=4" alt="Stefan profile photo" />
+        <div>
+          <p class="profile__role">Student | Firmware, IoT, Electronics</p>
+          <h1>Stefan</h1>
+          <p class="profile__bio">I build efficient firmware and explore the intersection of hardware and software in the embedded world.</p>
+          <a class="page-link" href="projects.html">Explore my projects</a>
+        </div>
+        <div class="hardware-leds" aria-label="System status indicators">
           <span class="led led-pwr" title="Power"></span>
           <span class="led led-sys" title="System"></span>
           <span class="led led-tx" title="Transmit"></span>
           <span class="led led-rx" title="Receive"></span>
-      </div>
-    </header>
-
-    <main>
-      <section class="panel">
-        <h2>Experience</h2>
-        <ul>
-          <li>Embedded Engineering Projects — Personal & Academic — 2024‑Present</li>
-          <li>Currently working at Marquardt in the field of embedded systems/Automotive</li>
-        </ul>
-      </section>
-
-      <section class="panel">
-        <h2>Education</h2>
-        <ul>
-          <li>Lucian Blaga University of Sibiu — 2024‑2028 / Computer Science</li>
-          <li>Courses in PCB design</li>
-          <li>Post-secondary school for mechanical Car Engineering</li>
-
-        </ul>
-      </section>
-
-      <section class="panel portfolio" aria-labelledby="portfolio-title">
-        <div class="portfolio__header">
-          <h2 id="portfolio-title">GitHub Portfolio</h2>
-          <p class="portfolio__subtitle">Embedded & firmware projects loaded from  GitHub </p>
         </div>
-
-        <div class="controls">
-          <label>
-            Search projects:
-            <input id="searchInput" type="search" placeholder="e.g., firmware, iot, drivers" />
-          </label>
-          <label>
-            Sort by:
-            <select id="sortSelect">
-              <option value="updated">Last updated</option>
-              <option value="stars">Stars</option>
-            </select>
-          </label>
-          <label>
-            Language:
-            <select id="languageFilter">
-              <option value="all">All</option>
-            </select>
-          </label>
-        </div>
-
-        <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
-        <div id="loadingSpinner" class="spinner" aria-label="Loading projects"></div>
-        <div id="projectsGrid" class="projects-grid"></div>
-        <button id="loadMoreBtn" class="load-more" type="button">Load more</button>
+      </section>
+      <section class="panel reveal">
+        <h2>Welcome</h2>
+        <p>Learn more about my background, browse projects loaded from GitHub, or send me a message.</p>
+        <p><a class="project-link" href="about.html">Read about me →</a></p>
       </section>
     </main>
-    <footer>
-      <a id="NextPager" class="page-link" href="Visualise.html">
-  Next Page
-</a>
-    </footer>
 
-    <script src="script.js"></script>
+    <footer><p>Stefan | Embedded Engineering</p></footer>
+    <script src="js/script.js"></script>
   </body>
 </html>

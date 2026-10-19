@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects | Stefan</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-logo" href="index.html">STEFAN<span>_DEV</span></a>
+      <button class="hamburger" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="nav-menu" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="projects.html" aria-current="page">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <section class="panel portfolio reveal" aria-labelledby="portfolio-title">
+        <div class="portfolio__header">
+          <h1 id="portfolio-title">GitHub Projects</h1>
+          <p class="portfolio__subtitle">Embedded and firmware projects loaded from GitHub.</p>
+        </div>
+        <div class="controls">
+          <label>Search projects:
+            <input id="searchInput" type="search" placeholder="e.g., firmware, iot, drivers" />
+          </label>
+          <label>Sort by:
+            <select id="sortSelect"><option value="updated">Last updated</option><option value="stars">Stars</option></select>
+          </label>
+          <label>Language:
+            <select id="languageFilter"><option value="all">All</option></select>
+          </label>
+        </div>
+        <div class="category-filters" aria-label="Project categories">
+          <span class="filter-label">Categories:</span>
+          <div id="categoryFilters" class="filter-buttons"></div>
+        </div>
+        <div id="statusMessage" class="status" role="status" aria-live="polite"></div>
+        <div id="loadingSpinner" class="spinner" aria-label="Loading projects"></div>
+        <div id="projectsGrid" class="projects-grid"></div>
+        <button id="loadMoreBtn" class="load-more" type="button">Load more</button>
+      </section>
+      <section class="panel reveal">
+        <h2>Hardware lab</h2>
+        <p>See electronics prototypes, PCB designs, and demonstrations in the hardware lab.</p>
+        <a class="page-link" href="Visualise.html">Open hardware lab</a>
+      </section>
+    </main>
+    <footer><p>Stefan | Embedded Engineering</p></footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>

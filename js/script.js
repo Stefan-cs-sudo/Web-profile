@@ -9,6 +9,13 @@ const projectsGrid = document.getElementById("projectsGrid");
 const loadingSpinner = document.getElementById("loadingSpinner");
 const statusMessage = document.getElementById("statusMessage");
 const loadMoreBtn = document.getElementById("loadMoreBtn");
+const categoryFilters = document.getElementById("categoryFilters");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".nav-menu");
+const contactForm = document.getElementById("contactForm");
+const messageInput = document.getElementById("contactMessage");
+const messageCount = document.getElementById("messageCount");
+const formStatus = document.getElementById("formStatus");
 
 let allProjects = [];
 let visibleCount = PAGE_SIZE;
@@ -57,13 +64,36 @@ function getFilteredProjects() {
 function buildLanguageFilter(projects) {
   const languages = [...new Set(projects.map((project) => project.language || "Unknown"))].sort();
   languageFilter.innerHTML = '<option value="all">All</option>';
+  categoryFilters.innerHTML = "";
+
+  const allButton = createCategoryButton("all", "All");
+  allButton.classList.add("active");
+  categoryFilters.appendChild(allButton);
 
   for (const language of languages) {
     const option = document.createElement("option");
     option.value = language;
     option.textContent = language;
     languageFilter.appendChild(option);
+    categoryFilters.appendChild(createCategoryButton(language, language));
   }
+}
+
+function createCategoryButton(category, label) {
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "filter-button";
+  button.dataset.category = category;
+  button.textContent = label;
+  button.addEventListener("click", () => {
+    languageFilter.value = category;
+    categoryFilters.querySelectorAll(".filter-button").forEach((item) => {
+      item.classList.toggle("active", item === button);
+    });
+    visibleCount = PAGE_SIZE;
+    renderProjects();
+  });
+  return button;
 }
 
 function createCard(project) {
@@ -140,6 +170,7 @@ async function loadFallbackProjects() {
   */
 /*
 async function init() {
+  if (!projectsGrid) return;
   showLoading(true);
   setStatusNotice("");
   setStatus("Loading projects...");
@@ -221,6 +252,7 @@ async function init() {
 }
 
 
+if (projectsGrid) {
 searchInput.addEventListener("input", () => {
   visibleCount = PAGE_SIZE;
   renderProjects();
@@ -233,6 +265,9 @@ sortSelect.addEventListener("change", () => {
 
 languageFilter.addEventListener("change", () => {
   visibleCount = PAGE_SIZE;
+  categoryFilters.querySelectorAll(".filter-button").forEach((button) => {
+    button.classList.toggle("active", button.dataset.category === languageFilter.value);
+  });
   renderProjects();
 });
 
@@ -253,5 +288,100 @@ loadMoreBtn.addEventListener("click", () => {
     renderProjects();
   }
 });
+}
 
+function initMobileMenu() {
+  if (!hamburger || !navMenu) return;
+
+  hamburger.addEventListener("click", () => {
+    const isOpen = navMenu.classList.toggle("is-open");
+    hamburger.classList.toggle("active", isOpen);
+    hamburger.setAttribute("aria-expanded", String(isOpen));
+    hamburger.setAttribute("aria-label", isOpen ? "Close navigation" : "Open navigation");
+  });
+
+  navMenu.addEventListener("click", (event) => {
+    if (event.target instanceof HTMLAnchorElement) {
+      navMenu.classList.remove("is-open");
+      hamburger.classList.remove("active");
+      hamburger.setAttribute("aria-expanded", "false");
+      hamburger.setAttribute("aria-label", "Open navigation");
+    }
+  });
+}
+
+function initScrollAnimations() {
+  const elements = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window)) {
+    elements.forEach((element) => element.classList.add("is-visible"));
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, currentObserver) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        currentObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  elements.forEach((element) => observer.observe(element));
+}
+
+function showFieldError(fieldName, message) {
+  const field = contactForm.elements[fieldName];
+  const error = contactForm.querySelector(`[data-error-for="${fieldName}"]`);
+  field.classList.toggle("invalid", Boolean(message));
+  field.setAttribute("aria-invalid", String(Boolean(message)));
+  error.textContent = message;
+}
+
+function validateField(fieldName) {
+  const field = contactForm.elements[fieldName];
+  const value = field.value.trim();
+  let message = "";
+
+  if (fieldName === "name" && !/^[A-Za-zÀ-ÿ ]{2,}$/.test(value)) {
+    message = "Use at least 2 letters and spaces only.";
+  } else if (fieldName === "email" && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+    message = "Enter a valid email address.";
+  } else if (fieldName === "phone" && value && !/^[0-9+() -]{7,}$/.test(value)) {
+    message = "Use numbers, spaces, dashes, or parentheses.";
+  } else if (fieldName === "message" && (value.length < 10 || value.length > 1000)) {
+    message = "Message must contain 10-1000 characters.";
+  }
+
+  showFieldError(fieldName, message);
+  return !message;
+}
+
+function initContactForm() {
+  if (!contactForm) return;
+  const fieldNames = ["name", "email", "phone", "message"];
+  fieldNames.forEach((fieldName) => {
+    contactForm.elements[fieldName].addEventListener("input", () => {
+      validateField(fieldName);
+      if (fieldName === "message") {
+        messageCount.textContent = String(contactForm.elements.message.value.length);
+      }
+    });
+  });
+
+  contactForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const isValid = fieldNames.every((fieldName) => validateField(fieldName));
+    if (!isValid) {
+      formStatus.textContent = "Please correct the highlighted fields.";
+      return;
+    }
+    formStatus.textContent = "Message validated successfully. Thank you!";
+    contactForm.reset();
+    messageCount.textContent = "0";
+  });
+}
+
+initMobileMenu();
+initScrollAnimations();
+initContactForm();
 init();

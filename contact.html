@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact | Stefan</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="site-logo" href="index.html">STEFAN<span>_DEV</span></a>
+      <button class="hamburger" type="button" aria-label="Open navigation" aria-controls="site-nav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav id="site-nav" class="nav-menu" aria-label="Main navigation">
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html" aria-current="page">Contact</a>
+      </nav>
+    </header>
+    <main>
+      <section class="panel reveal" aria-labelledby="contact-title">
+        <h1 id="contact-title">Contact</h1>
+        <p class="portfolio__subtitle">Send a message about an embedded systems or software project.</p>
+        <form id="contactForm" class="contact-form" novalidate>
+          <div class="form-row">
+            <label for="contactName">Name
+              <input id="contactName" name="name" type="text" autocomplete="name" required />
+              <span class="field-error" data-error-for="name"></span>
+            </label>
+            <label for="contactEmail">Email
+              <input id="contactEmail" name="email" type="email" autocomplete="email" required />
+              <span class="field-error" data-error-for="email"></span>
+            </label>
+          </div>
+          <label for="contactPhone">Phone <span class="optional">(optional)</span>
+            <input id="contactPhone" name="phone" type="tel" autocomplete="tel" />
+            <span class="field-error" data-error-for="phone"></span>
+          </label>
+          <label for="contactMessage">Message
+            <textarea id="contactMessage" name="message" rows="5" maxlength="1000" required></textarea>
+            <span class="message-counter"><span id="messageCount">0</span>/1000</span>
+            <span class="field-error" data-error-for="message"></span>
+          </label>
+          <button type="submit">Send message</button>
+          <p id="formStatus" class="form-status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+    </main>
+    <footer><p>Stefan | Embedded Engineering</p></footer>
+    <script src="js/script.js"></script>
+  </body>
+</html>
